@@ -6,6 +6,9 @@ module Neo4j
         FIRST = 'HEAD'
         LAST = 'LAST'
 
+        def paths
+        end
+
         def rels
           fail 'Cannot get rels without a relationship variable.' if !@rel_var
 

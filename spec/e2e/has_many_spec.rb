@@ -389,6 +389,18 @@ describe 'has_many' do
     end
   end
 
+  describe 'return path from association' do
+    before do
+      node.update(name: 'node')
+      node.knows << friend1
+      friend1.knows << friend2
+    end
+
+    it 'returns all paths' do
+      expect(node.knows.paths).to match_array([node, :any, friend1])
+    end
+  end
+
   describe 'variable-length relationship query' do
     before do
       node.knows << friend1
